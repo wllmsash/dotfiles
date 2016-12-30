@@ -1,0 +1,8 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- link:
+    ~/.vim: vim
+    ~/.vimrc: vimrc
