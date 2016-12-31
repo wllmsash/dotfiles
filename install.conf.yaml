@@ -6,6 +6,8 @@
 - clean: ['~']
 
 - link:
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim: vim
     ~/.vimrc: vimrc
 
