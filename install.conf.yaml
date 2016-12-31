@@ -6,3 +6,9 @@
 - link:
     ~/.vim: vim
     ~/.vimrc: vimrc
+
+- shell:
+    -
+      command: powerline/fonts/install.sh
+      stdout: true
+      stderr: true
