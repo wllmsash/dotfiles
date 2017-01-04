@@ -2,9 +2,10 @@
 set nocompatible
 
 " Tab options
-set tabstop=4
-set shiftwidth=4
-set expandtab
+" Using vim-sleuth to automate this currently
+" set tabstop=4
+" set shiftwidth=4
+" set expandtab
 
 " Highlight on search
 set hlsearch
