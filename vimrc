@@ -30,3 +30,6 @@ let g:airline_powerline_fonts=1
 
 " Set default encoding to utf-8
 set encoding=utf-8
+
+" Binding for NERDTree
+map <C-n> :NERDTreeToggle<CR>
