@@ -33,3 +33,9 @@ set encoding=utf-8
 
 " Binding for NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+" Show hidden files in Ctrlp
+let g:ctrlp_show_hidden=1
