@@ -1,0 +1,9 @@
+# Include user specific configuration
+[include]
+	path = ~/.gitinclude
+
+[core]
+	excludesfile = ~/.gitignore
+
+[alias]
+	draw = log --decorate --graph --oneline
