@@ -6,4 +6,4 @@
 	excludesfile = ~/.gitignore
 
 [alias]
-	draw = log --decorate --graph --oneline
+	draw = log --all --decorate --graph --oneline
