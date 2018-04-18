@@ -6,4 +6,9 @@
 	excludesfile = ~/.gitignore
 
 [alias]
-	draw = log --all --decorate --graph --oneline
+	draw = log --decorate --graph --oneline
+	draw-all = log --all --decorate --graph --oneline
+	fetch-prune = fetch --all --prune
+
+	da = !git draw-all
+	fp = !git fetch-prune
