@@ -3,7 +3,12 @@
 # Improve ls
 #   F = append type indicator
 #   h = human readable formatting
-alias ls="ls -Fh --color=auto"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	alias ls="ls -Fh"
+else
+	alias ls="ls -Fh --color=auto"
+fi
 
 # List all
 #   A = show all but . and ..
