@@ -3,7 +3,7 @@
 # Improve ls
 #   F = append type indicator
 #   h = human readable formatting
-alias ls="ls -Fh"
+alias ls="ls -Fh --color=auto"
 
 # List all
 #   A = show all but . and ..
