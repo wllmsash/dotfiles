@@ -11,6 +11,11 @@
       stdout: true
       stderr: true
       description: Installing git submodules
+    -
+      command: if test -f ~/.bashrc && ! test -L ~/.bashrc; then mv ~/.bashrc ~/.bashrc.old; echo "Backed up ~/.bashrc to ~/.bashrc.old"; fi
+      stdout: true
+      stderr: true
+      description: Checking if .bashrc exists
 
 - link:
     ~/.bash_aliases: bash_aliases
