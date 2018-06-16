@@ -5,6 +5,13 @@
 
 - clean: ['~']
 
+- shell:
+    -
+      command: git submodule update --init --recursive
+      stdout: true
+      stderr: true
+      description: Installing git submodules
+
 - link:
     ~/.bash_aliases: bash_aliases
     ~/.bash_profile: bash_profile
@@ -21,3 +28,4 @@
       command: powerline/fonts/install.sh
       stdout: true
       stderr: true
+      description: Installing vim powerline fonts
