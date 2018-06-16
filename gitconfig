@@ -3,6 +3,7 @@
 	path = ~/.gitinclude
 
 [core]
+	editor = vim
 	excludesfile = ~/.gitignore
 
 # Advanced Git Aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
