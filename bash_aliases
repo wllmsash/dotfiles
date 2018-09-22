@@ -3,8 +3,7 @@
 # Improve ls
 #   F = append type indicator
 #   h = human readable formatting
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then # OSX
 	alias ls="ls -Fh"
 else
 	alias ls="ls -Fh --color=auto"
