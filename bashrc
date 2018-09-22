@@ -31,3 +31,6 @@ fi
 
 # Source bash aliases
 [[ -r ~/.bash_aliases ]] && . ~/.bash_aliases
+
+# Source private bash aliases (from a private dotfiles)
+[[ -r ~/.bash_aliases_private ]] && . ~/.bash_aliases_private

@@ -1,6 +1,6 @@
-# Include user specific configuration
+# Include private configuration (from a private dotfiles)
 [include]
-	path = ~/.gitinclude
+	path = ~/.gitconfig_private
 
 [core]
 	editor = vim
