@@ -1,4 +1,4 @@
-# Vim start (https://github.com/github/gitignore/blob/master/Global/Vim.gitignore)
+### Vim (https://github.com/github/gitignore/blob/master/Global/Vim.gitignore)
 
 # swap
 [._]*.s[a-v][a-z]
@@ -13,4 +13,6 @@ Session.vim
 # auto-generated tag files
 tags
 
-# Vim end
+### OSX
+
+.DS_Store
