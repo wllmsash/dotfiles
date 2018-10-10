@@ -27,6 +27,14 @@ export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$
 
 fi
 
+### Functions
+
+# Source bash functions
+[[ -r ~/.bash_functions ]] && . ~/.bash_functions
+
+# Source private bash functions (from a private dotfiles)
+[[ -r ~/.bash_functions_private ]] && . ~/.bash_functions_private
+
 ### Aliases
 
 # Source bash aliases
