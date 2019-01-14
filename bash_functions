@@ -173,7 +173,7 @@ function killallagents() {
 	done
 }
 
-# Start an agent if not started and load every key in the ~/.keys directory
+# Start an agent if not started and load every .key file in the ~/.keys directory
 function addkeys() {
 	# Default life of keys is 180 seconds
 	local SSH_KEY_LIFE=180
@@ -196,7 +196,7 @@ function addkeys() {
 		return 1
 	fi
 
-	local KEYS=$(find ~/.keys -type f)
+	local KEYS=$(find ~/.keys -type f -name "*.key")
 
 	for key in $KEYS; do
 		# Check if key is loaded in agent
