@@ -1,8 +1,8 @@
 # Script and command aliases for bash
 
 # Improve ls
-#   F = append type indicator
-#   h = human readable formatting
+#   -F = append type indicator
+#   -h = human readable formatting
 if [[ "$OSTYPE" == "darwin"* ]]; then # OSX
 	alias ls="ls -Fh"
 else
@@ -10,6 +10,10 @@ else
 fi
 
 # List all
-#   A = show all but . and ..
-#   l = long list formatting
+#   -A = show all but . and ..
+#   -l = long list formatting
 alias ll="ls -lA"
+
+# SSH with agent forwarding
+#   -A = connect with agent forwarding
+alias ssf="ssh -A"
