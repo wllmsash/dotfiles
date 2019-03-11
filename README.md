@@ -20,7 +20,8 @@ cd dotfiles
 
 These dotfiles have been tested and are used in the following environments:
 
-* macOS Sierra 10.12.2
+* macOS Mojave 10.14.3
+* Ubuntu 18.04 LTS
 
 ## License
 
