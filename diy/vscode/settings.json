@@ -1,0 +1,23 @@
+/**
+ * VSCode Extensions:
+ *
+ * - Debugger for Chrome
+ * - GitLens
+ * - Markdown Preview Enhanced
+ * - markdownlint
+ * - Spell Right
+ */
+
+{
+  // Formatting
+  "editor.rulers": [80, 120],
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Development environment
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary"
+}
