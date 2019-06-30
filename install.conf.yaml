@@ -36,3 +36,10 @@
       stdout: true
       stderr: true
       description: Installing vim powerline fonts
+
+- shell:
+    -
+      command: echo 'Some config files are not installed automatically and can be found in the ./diy ((d)o (i)t (y)ourself) directory' && command ls -m ./diy/
+      stdout: true
+      stderr: true
+      description: Optional non-automated configuarion notification
