@@ -1,38 +1,38 @@
 # Include private configuration (from a private dotfiles)
 [include]
-	path = ~/.gitconfig_private
+  path = ~/.gitconfig_private
 
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore
+  editor = vim
+  excludesfile = ~/.gitignore
 
 # Advanced Git Aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
-	draw = log --decorate --graph --oneline
-	draw-all = log --all --decorate --graph --oneline
-	fetch-prune = fetch --all --prune
-	remerge = "!f() { git reset --soft $1; git update-ref MERGE_HEAD $2; git commit; }; f"
+  draw = log --decorate --graph --oneline
+  draw-all = log --all --decorate --graph --oneline
+  fetch-prune = fetch --all --prune
+  remerge = "!f() { git reset --soft $1; git update-ref MERGE_HEAD $2; git commit; }; f"
 
-	da = !git draw-all
-	fp = !git fetch-prune
+  da = !git draw-all
+  fp = !git fetch-prune
 
 # Alias Documentation
 #
-# remerge new_first_parent new_second_parent
+# - remerge new_first_parent new_second_parent
 #
-#     Creates a new merge commit from 2 new parents using the current working directory.
-#     Can be used to "squash" multiple merges into a single merge.
+#   Creates a new merge commit from 2 new parents using the current working directory.
+#   Can be used to "squash" multiple merges into a single merge.
 #
-#     Reference: http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
+#   Reference: http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
 #
-#     Diagram:
+#   Diagram:
 #
-#        X --- Y --------- M1 -------- M2 (my-feature)
-#       /                 /           /
-#      /                 /           /
-#     a --- b --- c --- d --- e --- f (stable)
+#      X --- Y --------- M1 -------- M2 (my-feature)
+#     /                 /           /
+#    /                 /           /
+#   a --- b --- c --- d --- e --- f (stable)
 #
-#        X --- Y ---- M (my-feature)
-#       /            /
-#      /            /
-#     a --- ... -- f (stable)
+#      X --- Y ---- M (my-feature)
+#     /            /
+#    /            /
+#   a --- ... -- f (stable)
