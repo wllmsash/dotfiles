@@ -6,33 +6,39 @@
   editor = vim
   excludesfile = ~/.gitignore
 
-# Advanced Git Aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
+# Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
+  # Draws graphs of the repository in the console
   draw = log --decorate --graph --oneline
   draw-all = log --all --decorate --graph --oneline
-  fetch-prune = fetch --all --prune
-  remerge = "!f() { git reset --soft $1; git update-ref MERGE_HEAD $2; git commit; }; f"
-
   da = !git draw-all
+
+  # Fetches from all remotes and removes all remote-tracking references that no longer exist across all remotes
+  fetch-prune = fetch --all --prune
   fp = !git fetch-prune
 
-# Alias Documentation
-#
-# - remerge new_first_parent new_second_parent
-#
-#   Creates a new merge commit from 2 new parents using the current working directory.
-#   Can be used to "squash" multiple merges into a single merge.
-#
-#   Reference: http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
-#
-#   Diagram:
-#
-#      X --- Y --------- M1 -------- M2 (my-feature)
-#     /                 /           /
-#    /                 /           /
-#   a --- b --- c --- d --- e --- f (stable)
-#
-#      X --- Y ---- M (my-feature)
-#     /            /
-#    /            /
-#   a --- ... -- f (stable)
+  # Usage: git remerge new_first_parent new_second_parent
+  #
+  # Creates a new merge commit from 2 parents. This operation commits the new merge, so anything in the staging area
+  # will be included.
+  # Useful for squashing multiple subsequent merges (and their conflic resolutions) into a single merge.
+  #
+  # Reference: http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
+  #
+  # Example: git remerge y f
+  #
+  #    x --- y --------- M1 -------- M2 (my-feature)
+  #   /                 /           /
+  #  /                 /           /
+  # a --- b --- c --- d --- e --- f (release)
+  #
+  #    x --- y ---- M (my-feature)
+  #   /            /
+  #  /            /
+  # a --- ... -- f (release)
+  #
+  remerge = "!f() { \
+    git reset --soft $1; \
+    git update-ref MERGE_HEAD $2; \
+    git commit; \
+  }; f"
