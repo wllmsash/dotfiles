@@ -42,3 +42,45 @@
     git update-ref MERGE_HEAD $2; \
     git commit; \
   }; f"
+
+  # Usage: git remotes-restore
+  #
+  # Restores the remotes saved in the .gitremotes file.
+  # The .gitremotes file format follows the output of `git remote -v`, excluding the fetch/push distinction as the
+  # fetch url is used by default. Each line is a different remote.
+  #
+  # Useful for storing the upstream remote details in private forks of public repositories on GitHub.
+  # Restoring a .gitremotes file containing `upstream {url}` lets us keep track of changes in the upstream repository.
+  #
+  remotes-restore = "!f() { \
+    local git_dir=$(git rev-parse --show-toplevel); \
+    local git_remotes_file=\"$git_dir/.gitremotes\"; \
+    if [ ! -e \"$git_remotes_file\" ]; then echo \"No .gitremotes file\"; exit 1; fi; \
+    cat $git_remotes_file | grep -P '^[^\\s]+\t[^\\s]+$' | while IFS="" read -r remote || [ -n \"$remote\" ]; do \
+      local remote_name=$(echo $remote | awk '{print $1}'); \
+      local remote_url=$(echo $remote | awk '{print $2}'); \
+      if [ -n \"$(git remote -v | grep -P \"^$remote_name\\s\")\" ]; then echo \"Skipping remote '$remote_name' as it already exists\"; continue; fi; \
+      git remote add $remote_name $remote_url; \
+      echo \"Added remote '$remote_name'\"; \
+    done; \
+  }; f"
+  rr = !git remotes-restore
+
+  # Usage: git remotes-save remote_name
+  #
+  # Appends the chosen remotes details to the .gitremotes file.
+  #
+  # See `remotes-restore` for further information.
+  #
+  remotes-save = "!f() { \
+    if [ -z "${1+x}" ]; then echo \"Usage: git remotes-save remote_name\"; exit 1; fi; \
+    local remote_name=$1; \
+    local git_dir=$(git rev-parse --show-toplevel); \
+    local git_remotes_file=\"$git_dir/.gitremotes\"; \
+    if [ -z \"$(git remote -v | grep -P \"^$remote_name\\s\")\" ]; then echo \"Remote '$remote_name' not found\"; exit 1; fi; \
+    if [ -e \"$git_remotes_file\" ] && [ -n \"$(cat $git_remotes_file | grep -P \"^$remote_name\\s\")\" ]; then echo \"Remote '$remote_name' already saved\"; exit 1; fi; \
+    local remote_url=$(git remote -v | grep -P \"^$remote_name\\t[^\\s]+ \\(fetch\\)$\" | awk '{print $2}'); \
+    echo \"$remote_name\\t$remote_url\" >> $git_remotes_file; \
+    echo \"Saved remote '$remote_name'\"; \
+  }; f"
+  rs = !git remotes-save
