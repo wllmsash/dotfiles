@@ -18,7 +18,7 @@ set relativenumber
 filetype plugin indent on
 syntax on
 
-" Always show vim-airline even on non-splits
+" Always show the status line (vim-airline)
 set laststatus=2
 
 " Set default encoding to utf-8
