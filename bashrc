@@ -3,7 +3,7 @@
 # Source original bashrc (before dotfiles)
 [[ -r ~/.bashrc_original ]] && . ~/.bashrc_original
 
-### OSX
+### macOS
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
