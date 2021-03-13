@@ -26,3 +26,8 @@ fi
 # Source bash aliases
 [[ -r ~/.bash_aliases_dotfiles ]] && . ~/.bash_aliases_dotfiles
 
+### Environment
+
+# Disable homebrew analytics
+export HOMEBREW_NO_ANALYTICS=1
+
