@@ -3,14 +3,6 @@
 # Source original bashrc (before dotfiles)
 [[ -r ~/.bashrc_original ]] && . ~/.bashrc_original
 
-### WSL (Bash on Windows)
-
-# umask defaults to 000 causing new files and directories to have loose permissions
-# This fix sets the correct umask
-#
-# Link: https://github.com/Microsoft/WSL/issues/352
-if test "$(umask)" -eq '000' || test "$(umask)" -eq '0000'; then umask 022; fi
-
 ### OSX
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
