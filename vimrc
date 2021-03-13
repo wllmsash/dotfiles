@@ -25,9 +25,6 @@ execute pathogen#infect()
 " Always show vim-airline even on non-splits
 set laststatus=2
 
-" Add powerline fonts to vim-airline
-let g:airline_powerline_fonts=1
-
 " Set default encoding to utf-8
 set encoding=utf-8
 
