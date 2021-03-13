@@ -18,10 +18,10 @@ cd dotfiles
 
 ## Supported Environments
 
-These dotfiles have been tested and are used in the following environments:
+Currently being used in the following environments:
 
-* macOS Mojave 10.14.3
-* Ubuntu 18.04 LTS
+* macOS Big Sur 11.2.3
+* Ubuntu 20.04 LTS
 
 ## License
 
