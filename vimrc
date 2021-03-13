@@ -18,10 +18,6 @@ set relativenumber
 filetype plugin indent on
 syntax on
 
-" Enable vim-pathogen to manage runtimepath (rtp)
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 " Always show vim-airline even on non-splits
 set laststatus=2
 
