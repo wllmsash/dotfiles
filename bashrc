@@ -17,11 +17,6 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 #   username@hostname$
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 
-# Bash completion
-# Requires `brew install bash-completion` to work
-# For git completion requires `brew install git` also
-[[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && . /usr/local/etc/profile.d/bash_completion.sh
-
 fi
 
 ### Functions
