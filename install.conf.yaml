@@ -37,11 +37,6 @@
       stderr: true
       description: Installing vim powerline fonts
     -
-      command: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-      stdout: true
-      stderr: true
-      description: Installing nvm
-    -
       command: echo 'Some config files are not installed automatically and can be found in the ./diy ((d)o (i)t (y)ourself) directory' && command ls -m ./diy/
       stdout: true
       stderr: true
