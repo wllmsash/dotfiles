@@ -17,14 +17,19 @@
       stdout: true
       stderr: true
       description: Configure bash
+    -
+      command: ./configure-git.sh
+      stdout: true
+      stderr: true
+      description: Configure git
 
 - link:
     ~/.bash_aliases_dotfiles: bash_aliases
     ~/.bash_functions_dotfiles: bash_functions
     ~/.bash_profile_dotfiles: bash_profile
     ~/.bashrc_dotfiles: bashrc
-    ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
+    ~/.gitconfig_dotfiles: gitconfig
+    ~/.gitignore_dotfiles: gitignore
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim: vim

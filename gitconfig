@@ -1,10 +1,6 @@
-# Include private configuration (from a private dotfiles)
-[include]
-  path = ~/.gitconfig_private
-
 [core]
   editor = vim
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore_dotfiles
 
 # Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
