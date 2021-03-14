@@ -1,8 +1,5 @@
 # Interactive non-login shell startup file
 
-# Source original bashrc (before dotfiles)
-[[ -r ~/.bashrc_original ]] && . ~/.bashrc_original
-
 ### macOS
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -22,15 +19,10 @@ fi
 ### Functions
 
 # Source bash functions
-[[ -r ~/.bash_functions ]] && . ~/.bash_functions
-
-# Source private bash functions (from a private dotfiles)
-[[ -r ~/.bash_functions_private ]] && . ~/.bash_functions_private
+[[ -r ~/.bash_functions_dotfiles ]] && . ~/.bash_functions_dotfiles
 
 ### Aliases
 
 # Source bash aliases
-[[ -r ~/.bash_aliases ]] && . ~/.bash_aliases
+[[ -r ~/.bash_aliases_dotfiles ]] && . ~/.bash_aliases_dotfiles
 
-# Source private bash aliases (from a private dotfiles)
-[[ -r ~/.bash_aliases_private ]] && . ~/.bash_aliases_private

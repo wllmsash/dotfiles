@@ -13,16 +13,16 @@
       stderr: true
       description: Installing git submodules
     -
-      command: if test -f ~/.bashrc && ! test -L ~/.bashrc; then mv ~/.bashrc ~/.bashrc_original; echo "Backed up ~/.bashrc to ~/.bashrc_original"; fi
+      command: ./configure-bash.sh
       stdout: true
       stderr: true
-      description: Checking if .bashrc exists
+      description: Configure bash
 
 - link:
-    ~/.bash_aliases: bash_aliases
-    ~/.bash_functions: bash_functions
-    ~/.bash_profile: bash_profile
-    ~/.bashrc: bashrc
+    ~/.bash_aliases_dotfiles: bash_aliases
+    ~/.bash_functions_dotfiles: bash_functions
+    ~/.bash_profile_dotfiles: bash_profile
+    ~/.bashrc_dotfiles: bashrc
     ~/.gitconfig: gitconfig
     ~/.gitignore: gitignore
     ~/.tmux.conf: tmux.conf
