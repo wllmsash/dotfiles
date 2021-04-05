@@ -1,6 +1,5 @@
 [core]
   editor = vim
-  excludesfile = ~/.gitignore_dotfiles
 
 # Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
