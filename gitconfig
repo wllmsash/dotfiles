@@ -1,6 +1,9 @@
 [core]
   editor = vim
 
+[init]
+  defaultBranch = main
+
 # Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
   # Draws graphs of the repository in the console
