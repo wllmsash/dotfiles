@@ -38,7 +38,7 @@
 
 - shell:
     -
-      command: echo 'Some config files are not installed automatically and can be found in the ./diy ((d)o (i)t (y)ourself) directory' && command ls -m ./diy/
+      command: echo 'Some config files are not installed automatically and can be found in the ./diy ((d)o (i)t (y)ourself) directory' && ls -m ./diy/
       stdout: true
       stderr: true
       description: Optional non-automated configuration notification
