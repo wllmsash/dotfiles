@@ -16,12 +16,12 @@
       command: ./configure-bash.sh
       stdout: true
       stderr: true
-      description: Configure bash
+      description: Configuring bash
     -
       command: ./configure-git.sh
       stdout: true
       stderr: true
-      description: Configure git
+      description: Configuring git
 
 - link:
     ~/.bash_aliases_dotfiles: bash_aliases
