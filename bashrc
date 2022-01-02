@@ -31,3 +31,24 @@ fi
 # Disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
+# Use keychain, if it exists
+#
+# Imports the environment variables for the keychain managed ssh-agent or starts
+# a new keychain managed ssh-agent if one has not been started already.
+#
+# --agents ssh: Only use keychain for ssh (as opposed to gpg etc)
+# --timeout 3: Sets the default timeout for keys added to the agent to 3 minutes
+# --noinherit: Do not inherit agents from existing $SSH_AGENT_PID or $SSH_AGENT_SOCK
+#   environment variables. This includes any non keychain managed SSH agents (with PIDs
+#   and sockets) as well as all forwarded SSH agents (with only sockets).
+#   By extension, this includes the macOS Keychain, as _I think_ this uses agent
+#   forwarding to add the OS managed keys to the agent.
+#   See https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys
+#   for more info.
+# --quiet: Hide the keychain welcome message on init.
+# --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
+#   so must be evaluated in the current shell.
+if command -v keychain &> /dev/null; then
+  eval $(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)
+fi
+

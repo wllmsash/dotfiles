@@ -22,6 +22,12 @@
       stdout: true
       stderr: true
       description: Configuring git
+    -
+      command: ./install-keychain.sh
+      stdin: true
+      stdout: true
+      stderr: true
+      description: Installing keychain, utility to help manage ssh-agent
 
 - link:
     ~/.bash_aliases_dotfiles: bash_aliases
