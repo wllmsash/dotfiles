@@ -8,11 +8,13 @@
 [alias]
   # Draws graphs of the repository in the console
   draw = log --decorate --graph --oneline
-  draw-all = log --all --decorate --graph --oneline
+  draw-all = log --decorate --graph --oneline --all
   da = !git draw-all
 
-  # Fetches from all remotes and removes all remote-tracking references that no longer exist across all remotes
-  fetch-prune = fetch --all --prune
+  # Fetches branches and tags from all remotes. Prunes remote-tracking branches where they no longer exist on the remote,
+  # but does not prune tags as tags fetched from different remotes share the same local namespace.
+  # See https://git-scm.com/docs/git-fetch#_pruning for more information.
+  fetch-prune = fetch --all --prune --tags
   fp = !git fetch-prune
 
   # Usage: git remerge new_first_parent new_second_parent
@@ -82,3 +84,4 @@
     echo \"Saved remote '$remote_name'\"; \
   }; f"
   rs = !git remotes-save
+
