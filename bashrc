@@ -31,7 +31,7 @@ fi
 # Disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-# Use keychain, if it exists
+# Start keychain if it's installed
 #
 # Imports the environment variables for the keychain managed ssh-agent or starts
 # a new keychain managed ssh-agent if one has not been started already.
@@ -51,4 +51,7 @@ export HOMEBREW_NO_ANALYTICS=1
 if command -v keychain &> /dev/null; then
   eval $(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)
 fi
+
+# Example: Load all *.key files in ~/.ssh into keychain for 1 day (1440 minutes)
+# keychain --quiet --timeout 1440 $(find $HOME/.ssh -name "*.key")
 
