@@ -31,10 +31,12 @@ fi
 # Disable homebrew analytics
 export HOMEBREW_NO_ANALYTICS=1
 
-# Start keychain if it's installed
+# Start keychain if it's installed and the shell is interactive
 #
 # Imports the environment variables for the keychain managed ssh-agent or starts
 # a new keychain managed ssh-agent if one has not been started already.
+# Only start keychain in interactive shells as non-interactive shells may want to
+# forward their own agents.
 #
 # --agents ssh: Only use keychain for ssh (as opposed to gpg etc)
 # --timeout 3: Sets the default timeout for keys added to the agent to 3 minutes
@@ -48,7 +50,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # --quiet: Hide the keychain welcome message on init.
 # --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
 #   so must be evaluated in the current shell.
-if command -v keychain &> /dev/null; then
+if tty -s && command -v keychain &> /dev/null; then
   eval $(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)
 fi
 
