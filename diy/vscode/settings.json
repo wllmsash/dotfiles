@@ -1,25 +1,40 @@
-/**
- * VSCode Extensions:
- *
- * - Debugger for Chrome
- * - Docker
- * - GitLens
- * - Markdown Preview Enhanced
- * - markdownlint
- * - Remote Development
- * - Spell Right
- */
-
 {
-  // Formatting
-  "editor.rulers": [80, 120],
+  // VSCode Extensions:
+  // - Docker (ms-azuretools.vscode-docker)
+  // - GitLens (eamodio.gitlens)
+  // - Javascript Debugger (ms-vscode.js-debug)
+  // - Remote Development (ms-vscode-remote.vscode-remote-extensionpack)
+  // - Render Line Endings (medo64.render-crlf)
+
+  // # Code formatting
   "editor.tabSize": 2,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+
+  // # Editor visuals
+
+  // ## code-eol depends on "editor.renderWhitespace": "all"
+  "code-eol.crlfCharacter": "↵",
+  "code-eol.highlightExtraWhitespace": true,
+  "code-eol.highlightNonDefault": true,
+  "code-eol.newlineCharacter": "↓",
+  "code-eol.returnCharacter": "←",
+
+  "diffEditor.renderSideBySide": true,
+  "editor.guides.indentation": true,
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "all",
+  "editor.rulers": [
+    80,
+    120
+  ],
 
   // Development environment
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "boundary"
+
+  // Misc
+  "telemetry.telemetryLevel": "off",
 }
