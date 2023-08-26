@@ -1,21 +1,17 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # gitconfig
-if ! test -f ~/.gitconfig
+if test -e ~/.gitconfig && ! test -f ~/.gitconfig
 then
-  touch ~/.config
+  echo 'Not able to modify ~/.gitconfig as it is not a regular file'
+  exit 1
 fi
 
-if ! test -L ~/.gitconfig
+if ! grep -Fxq '# Include gitconfig from dotfiles' ~/.gitconfig
 then
-  if ! grep -Fxq '# Include gitconfig from dotfiles' ~/.gitconfig
-  then
-    printf "# Include gitconfig from dotfiles\n[include]\n  path = ~/.gitconfig_dotfiles\n\n" | cat - ~/.gitconfig | tee ~/.gitconfig
-    echo 'Included gitconfig_dotfiles from gitconfig'
-  else
-    echo 'gitconfig_dotfiles already included'
-  fi
+  printf "# Include gitconfig from dotfiles\n[include]\n  path = ~/.gitconfig_dotfiles\n\n" | cat - ~/.gitconfig | tee ~/.gitconfig > /dev/null
+  echo 'Included gitconfig_dotfiles from gitconfig'
 else
-  echo 'Not able to modify ~/.gitconfig as it is not a regular file'
+  echo 'gitconfig_dotfiles already included'
 fi
 
