@@ -7,8 +7,8 @@
 # Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
   # Draws graphs of the repository in the console
-  draw = log --decorate --graph --oneline
-  draw-all = log --decorate --graph --oneline --all
+  draw = log --decorate --graph --oneline --abbrev=8
+  draw-all = log --decorate --graph --oneline --all --abbrev=8
   da = !git draw-all
 
   # Fetches branches and tags from all remotes. Prunes remote-tracking branches where they no longer exist on the remote,
