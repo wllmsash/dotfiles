@@ -7,15 +7,15 @@
 # Git aliases: https://git.wiki.kernel.org/index.php/Aliases#Advanced_aliases_with_arguments
 [alias]
   # Draws graphs of the repository in the console
-  draw = log --decorate --graph --oneline --abbrev=8
-  draw-all = log --decorate --graph --oneline --all --abbrev=8
-  da = !git draw-all
+  draw = "!f() { git log --decorate --graph --oneline --abbrev=8 \"$@\"; }; f"
+  draw-all = draw --all
+  da = draw-all
 
   # Fetches branches and tags from all remotes. Prunes remote-tracking branches where they no longer exist on the remote,
   # but does not prune tags as tags fetched from different remotes share the same local namespace.
   # See https://git-scm.com/docs/git-fetch#_pruning for more information.
-  fetch-prune = fetch --all --prune --tags
-  fp = !git fetch-prune
+  fetch-prune = "!f() { git fetch --all --prune --tags \"$@\"; }; f"
+  fp = fetch-prune
 
   # Usage: git remerge new_first_parent new_second_parent
   #
