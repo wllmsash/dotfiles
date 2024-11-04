@@ -21,9 +21,9 @@
   #
   # Creates a new merge commit from 2 parents. This operation commits the new merge, so anything in the staging area
   # will be included.
-  # Useful for squashing multiple subsequent merges (and their conflic resolutions) into a single merge.
+  # Useful for squashing multiple subsequent merges (and their conflict resolutions) into a single merge.
   #
-  # Reference: http://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
+  # Reference: https://stackoverflow.com/questions/1725708/git-rebase-interactive-squash-merge-commits-together
   #
   # Example: git remerge y f
   #
