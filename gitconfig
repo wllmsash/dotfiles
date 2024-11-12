@@ -8,6 +8,7 @@
 [alias]
   # Draws graphs of the repository in the console
   draw = log --decorate --graph --oneline --abbrev=8
+  d = draw
   draw-all = draw --all
   da = draw-all
 
