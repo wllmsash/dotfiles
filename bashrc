@@ -1,35 +1,29 @@
-# Interactive non-login shell startup file
+# bash interactive non-login shell startup file
 
-### macOS
+if test -r "$HOME/.bash_aliases_dotfiles"; then source "$HOME/.bash_aliases_dotfiles"; fi
+if test -r "$HOME/.bash_functions_dotfiles"; then source "$HOME/.bash_functions_dotfiles"; fi
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Enable coloring of terminal
+# Configure macOS.
+if test "$(uname)" = "Darwin"; then
+  # Enable coloring of terminal.
   export CLICOLOR=1
 
-  # Better coloring of ls output
+  # Better coloring of ls output.
   export LSCOLORS=ExFxBxDxCxegedabagacad
 
-  # Primary prompt customization
-  #   username@hostname$
+  # Set prompt to username@hostname$.
   export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+
+  # Disable homebrew analytics.
+  export HOMEBREW_NO_ANALYTICS=1
 fi
 
-### Functions
+# Try to set LS_COLORS.
+if command -v dircolors >/dev/null 2>&1; then
+  eval "$(dircolors -b)"
+fi
 
-# Source bash functions
-[[ -r ~/.bash_functions_dotfiles ]] && . ~/.bash_functions_dotfiles
-
-### Aliases
-
-# Source bash aliases
-[[ -r ~/.bash_aliases_dotfiles ]] && . ~/.bash_aliases_dotfiles
-
-### Environment
-
-# Disable homebrew analytics
-export HOMEBREW_NO_ANALYTICS=1
-
-# Start keychain if it's installed and the shell is interactive
+# Start keychain if it's installed and the shell is interactive.
 #
 # Imports the environment variables for the keychain managed ssh-agent or starts
 # a new keychain managed ssh-agent if one has not been started already.
@@ -49,8 +43,8 @@ export HOMEBREW_NO_ANALYTICS=1
 # --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
 #   so must be evaluated in the current shell.
 if tty -s && command -v keychain >/dev/null 2>&1; then
-  eval $(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)
+  eval "$(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)"
 fi
 
-# Example: Load all *.key files in ~/.ssh into keychain for 1 day (1440 minutes)
-# keychain --quiet --timeout 1440 $(find $HOME/.ssh -name "*.key")
+# Example: Load all *.key files in $HOME/.ssh into keychain for 1 day (1440 minutes)
+# keychain --quiet --timeout 1440 "$(find $HOME/.ssh -name "*.key")"
