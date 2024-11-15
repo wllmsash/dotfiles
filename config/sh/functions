@@ -11,3 +11,13 @@ ensure_dir() {
   local dir_path="$1"
   mkdir -p "$dir_path"
 }
+
+# Only use this within a subshell to prevent persisting.
+use_gnu_grep() {
+  if test "$(uname)" = "Darwin"; then
+    # Use ggrep (GNU grep) from `brew install grep`.
+    grep() {
+      ggrep "$@"
+    }
+  fi
+}

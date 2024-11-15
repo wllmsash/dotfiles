@@ -18,6 +18,11 @@
       stderr: true
       description: Configuring bash
     -
+      command: ./configure-zsh.sh
+      stdout: true
+      stderr: true
+      description: Configuring zsh
+    -
       command: ./configure-git.sh
       stdout: true
       stderr: true
@@ -28,6 +33,8 @@
     ~/.bashrc_dotfiles: bashrc
     ~/.bootstrap: bootstrap
     ~/.config/git/ignore: config/git/ignore
+    ~/.config/zsh/plugins/zsh-autosuggestions: config/zsh/plugins/zsh-autosuggestions
+    ~/.config/zsh/plugins/zsh-syntax-highlighting: config/zsh/plugins/zsh-syntax-highlighting
     ~/.local/share/keychain: local/share/keychain
     ~/.gitconfig_dotfiles: gitconfig
     ~/.config/bash/functions: config/bash/functions
@@ -35,6 +42,7 @@
     ~/.config/sh/environment: config/sh/environment
     ~/.config/sh/functions: config/sh/functions
     ~/.config/sh/config: config/sh/config
+    ~/.config/zsh/functions: config/zsh/functions
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim
@@ -43,6 +51,8 @@
     ~/.vim/pack/plugins/start/vim-airline: vim/pack/plugins/start/vim-airline
     ~/.vim/pack/plugins/start/vim-sleuth: vim/pack/plugins/start/vim-sleuth
     ~/.vimrc: vimrc
+    ~/.zprofile_dotfiles: zprofile
+    ~/.zshrc_dotfiles: zshrc
 
 - link:
     ~/.local/bin/keychain: ~/.local/share/keychain/keychain

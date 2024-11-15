@@ -1,0 +1,28 @@
+lazyload() {
+  autoload -Uz "$@"
+}
+
+prepend_path() {
+  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
+
+  local dir_path="$1"
+  path=("$dir_path" "$path[@]")
+}
+
+add_plugin() {
+  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
+
+  local file_path="$1"
+  local plugin_path="$XDG_CONFIG_HOME/zsh/plugins/$file_path"
+  if test -e "$plugin_path"; then source "$plugin_path"; fi
+}
+
+# Reload command history from HISTFILE.
+# Useful for importing history from other sessions.
+reload_history() {
+  fc -RI
+}
+
+devstatus() {
+  bash -c ". \"$HOME/.config/bash/functions\"; devstatus $@"
+}
