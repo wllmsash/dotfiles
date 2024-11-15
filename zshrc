@@ -51,7 +51,7 @@ lazyload compinit && compinit
 lazyload bashcompinit && bashcompinit
 
 # Try to use fzf to search command history.
-if command_exists fzf; then
+if command_exists 'fzf'; then
   # Disable the builtin bindkey to stop `fzf --zsh` from forcing it's key binding opinions on us.
   bindkey() {}
 

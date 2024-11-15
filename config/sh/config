@@ -11,7 +11,7 @@ ensure_xdg_directories() {
 # Sets LS_COLORS.
 # Used by `ls --color=auto`.
 try_set_ls_colors() {
-  if command_exists dircolors; then
+  if command_exists 'dircolors'; then
     eval "$(dircolors -b)"
   fi
 }
@@ -34,7 +34,7 @@ try_set_ls_colors() {
 # --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
 #   so must be evaluated in the current shell.
 try_start_keychain() {
-  if command_exists keychain; then
+  if command_exists 'keychain'; then
     eval "$(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)"
   fi
 }
