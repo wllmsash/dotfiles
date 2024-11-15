@@ -2,7 +2,7 @@
 
 A repository to host my dotfiles and general environment configuration. The [dotbot][dotbot] bootstrapper is used for installation and is included in this repository.
 
-The bootstrapper creates symlinks to dotfiles in the user home directory ``~`` along with running shell scripts for more involved installation tasks.
+The bootstrapper creates symlinks to dotfiles in the user home directory `~` along with running shell scripts for more involved installation tasks.
 
 ## Installation
 

@@ -1,7 +1,7 @@
 - defaults:
     link:
-        create: true
-        relink: true
+      create: true
+      relink: true
 
 - clean:
     - '~'
@@ -34,13 +34,13 @@
     ~/.bash_functions_dotfiles: bash_functions
     ~/.bash_profile_dotfiles: bash_profile
     ~/.bashrc_dotfiles: bashrc
+    ~/.bootstrap: bootstrap
     ~/.config/git/ignore: config/git/ignore
     ~/.gitconfig_dotfiles: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim: vim
     ~/.vimrc: vimrc
-    ~/bootstrap: bootstrap
 
 - shell:
     -
