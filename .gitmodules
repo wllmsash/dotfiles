@@ -1,6 +1,9 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "local/share/keychain"]
+	path = local/share/keychain
+	url = https://github.com/funtoo/keychain
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm

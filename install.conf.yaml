@@ -22,12 +22,6 @@
       stdout: true
       stderr: true
       description: Configuring git
-    -
-      command: ./install-keychain.sh
-      stdin: true
-      stdout: true
-      stderr: true
-      description: Installing keychain, utility to help manage ssh-agent
 
 - link:
     ~/.bash_aliases_dotfiles: bash_aliases
@@ -36,6 +30,7 @@
     ~/.bashrc_dotfiles: bashrc
     ~/.bootstrap: bootstrap
     ~/.config/git/ignore: config/git/ignore
+    ~/.local/share/keychain: local/share/keychain
     ~/.gitconfig_dotfiles: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
@@ -45,6 +40,9 @@
     ~/.vim/pack/plugins/start/vim-airline: vim/pack/plugins/start/vim-airline
     ~/.vim/pack/plugins/start/vim-sleuth: vim/pack/plugins/start/vim-sleuth
     ~/.vimrc: vimrc
+
+- link:
+    ~/.local/bin/keychain: ~/.local/share/keychain/keychain
 
 - shell:
     -
