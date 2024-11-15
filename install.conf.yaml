@@ -59,7 +59,23 @@
 
 - shell:
     -
-      command: echo 'Some config files are not installed automatically and can be found in the ./diy ((d)o (i)t (y)ourself) directory' && ls -m ./diy/
+      command: >
+        echo 'RECOMMENDED: Install packages';
+        echo '  - fzf';
+        echo '  - zsh';
+        echo 'RECOMMENDED (macOS): Install packages';
+        echo '  - ./.bootstrap';
+        echo 'RECOMMENDED: Run commands';
+        echo '  - chsh -s "$(which zsh)"';
+        echo '';
       stdout: true
       stderr: true
-      description: Optional non-automated configuration notification
+      description: Recommended manual tasks
+    -
+      command: >
+        echo 'OPTIONAL: Apply config files';
+        echo '  - ./diy';
+        echo '';
+      stdout: true
+      stderr: true
+      description: Optional manual tasks
