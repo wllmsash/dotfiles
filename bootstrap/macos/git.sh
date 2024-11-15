@@ -1,8 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 which -s brew
-if [[ $? != 0 ]];
-then
+if test $? -ne 0; then
   echo "Requires brew, exiting"
   exit 1
 fi

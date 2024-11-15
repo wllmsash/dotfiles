@@ -1,8 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 which -s brew
-if [[ $? == 0 ]];
-then
+if test $? -eq 0; then
   echo "brew already installed, exiting"
   exit 1
 fi

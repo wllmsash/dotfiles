@@ -1,16 +1,17 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Test if keychain is already installed
-if command -v keychain &> /dev/null; then
+if command -v keychain >/dev/null 2>&1; then
   echo 'keychain already installed, continuing'
   exit 0
 fi
 
-read -p "Install keychain? [y/n]" -n 1 -r SHOULD_INSTALL; echo ""
-if [[ ! $SHOULD_INSTALL =~ ^[Yy]$ ]]; then
-  echo 'skipping installation'
-  exit 0
-fi
+echo "Install keychain? [y/n] "
+read SHOULD_INSTALL
+case "$SHOULD_INSTALL" in
+  [Yy]*) break;;
+  *) echo 'skipping installation'; exit 0;;
+esac
 
 KEYCHAIN_VERSION=2.8.5
 

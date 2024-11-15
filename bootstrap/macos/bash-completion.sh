@@ -1,8 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 which -s brew
-if [[ $? != 0 ]];
-then
+if test $? -ne 0; then
   echo "Requires brew, exiting"
   exit 1
 fi
@@ -10,11 +9,11 @@ fi
 brew update
 brew install bash-completion
 
-if ! grep -Fxq '# dotfiles: bash-completion' ~/.bashrc;
+if ! grep -Fxq '# dotfiles: bash-completion' "$HOME/.bashrc";
 then
-  cat <<EOF >> ~/.bashrc
+  cat <<EOF >> "$HOME/.bashrc"
 # dotfiles: bash-completion
-[[ -r /usr/local/etc/profile.d/bash_completion.sh ]] && . /usr/local/etc/profile.d/bash_completion.sh
+if test -r "/usr/local/etc/profile.d/bash_completion.sh"; then source "/usr/local/etc/profile.d/bash_completion.sh"; fi
 
 EOF
 fi

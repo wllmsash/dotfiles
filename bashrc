@@ -48,7 +48,7 @@ export HOMEBREW_NO_ANALYTICS=1
 # --quiet: Hide the keychain welcome message on init.
 # --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
 #   so must be evaluated in the current shell.
-if tty -s && command -v keychain &> /dev/null; then
+if tty -s && command -v keychain >/dev/null 2>&1; then
   eval $(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)
 fi
 
