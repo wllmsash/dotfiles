@@ -39,7 +39,11 @@
     ~/.gitconfig_dotfiles: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
-    ~/.vim: vim
+    ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim
+    ~/.vim/pack/plugins/start/nerdtree: vim/pack/plugins/start/nerdtree
+    ~/.vim/pack/plugins/start/typescript-vim: vim/pack/plugins/start/typescript-vim
+    ~/.vim/pack/plugins/start/vim-airline: vim/pack/plugins/start/vim-airline
+    ~/.vim/pack/plugins/start/vim-sleuth: vim/pack/plugins/start/vim-sleuth
     ~/.vimrc: vimrc
 
 - shell:
