@@ -24,16 +24,17 @@
       description: Configuring git
 
 - link:
-    ~/.bash_functions: bash_functions
     ~/.bash_profile_dotfiles: bash_profile
     ~/.bashrc_dotfiles: bashrc
     ~/.bootstrap: bootstrap
     ~/.config/git/ignore: config/git/ignore
     ~/.local/share/keychain: local/share/keychain
     ~/.gitconfig_dotfiles: gitconfig
-    ~/.sh_aliases: sh_aliases
-    ~/.sh_environment: sh_environment
-    ~/.sh_functions: sh_functions
+    ~/.config/bash/functions: config/bash/functions
+    ~/.config/sh/aliases: config/sh/aliases
+    ~/.config/sh/environment: config/sh/environment
+    ~/.config/sh/functions: config/sh/functions
+    ~/.config/sh/config: config/sh/config
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim

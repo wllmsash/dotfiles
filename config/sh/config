@@ -1,0 +1,40 @@
+# Ensure XDG base directories exist.
+# See https://specifications.freedesktop.org/basedir-spec/latest/.
+ensure_xdg_directories() {
+  ensure_dir "$XDG_CACHE_HOME"
+  ensure_dir "$XDG_CONFIG_HOME"
+  ensure_dir "$XDG_DATA_HOME"
+  ensure_dir "$XDG_STATE_HOME"
+  ensure_dir "$XDG_BIN_HOME"
+}
+
+# Sets LS_COLORS.
+# Used by `ls --color=auto`.
+try_set_ls_colors() {
+  if command_exists dircolors; then
+    eval "$(dircolors -b)"
+  fi
+}
+
+# Imports the environment variables for the keychain managed ssh-agent or starts
+# a new keychain managed ssh-agent if one has not been started already.
+# Only start keychain in interactive shells as non-interactive shells may want to
+# forward their own agents.
+#
+# --agents ssh: Only use keychain for ssh (as opposed to gpg etc)
+# --timeout 3: Sets the default timeout for keys added to the agent to 3 minutes
+# --noinherit: Do not inherit agents from existing $SSH_AGENT_PID or $SSH_AGENT_SOCK
+#   environment variables. This includes any non keychain managed SSH agents (with PIDs
+#   and sockets) as well as all forwarded SSH agents (with only sockets).
+#   By extension, this includes the macOS Keychain, as _I think_ this uses agent
+#   forwarding to add the OS managed keys to the agent.
+#   See https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys
+#   for more info.
+# --quiet: Hide the keychain welcome message on init.
+# --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
+#   so must be evaluated in the current shell.
+try_start_keychain() {
+  if command_exists keychain; then
+    eval "$(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)"
+  fi
+}

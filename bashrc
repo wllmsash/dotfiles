@@ -1,55 +1,19 @@
 # bash interactive non-login shell startup file
 
-if test -r "$HOME/.sh_functions"; then source "$HOME/.sh_functions"; fi
-if test -r "$HOME/.sh_environment"; then source "$HOME/.sh_environment"; fi
-if test -r "$HOME/.sh_aliases"; then source "$HOME/.sh_aliases"; fi
-if test -r "$HOME/.bash_functions"; then source "$HOME/.bash_functions"; fi
+if test -r "$HOME/.config/sh/functions"; then source "$HOME/.config/sh/functions"; fi
+if test -r "$HOME/.config/sh/environment"; then source "$HOME/.config/sh/environment"; fi
+if test -r "$HOME/.config/sh/aliases"; then source "$HOME/.config/sh/aliases"; fi
+if test -r "$HOME/.config/sh/config"; then source "$HOME/.config/sh/config"; fi
+if test -r "$HOME/.config/bash/functions"; then source "$HOME/.config/bash/functions"; fi
 
-prepend_path() {
-  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
-
-  local dir_path="$1"
-  export PATH="$dir_path:$PATH"
-}
-
-# Ensure XDG base directories exist.
-# See https://specifications.freedesktop.org/basedir-spec/latest/.
-ensure_dir "$XDG_CACHE_HOME"
-ensure_dir "$XDG_CONFIG_HOME"
-ensure_dir "$XDG_DATA_HOME"
-ensure_dir "$XDG_STATE_HOME"
-ensure_dir "$XDG_BIN_HOME"
-
-# Add XDG_BIN_HOME to path.
+# Configure XDG base directories.
+ensure_xdg_directories
 prepend_path "$XDG_BIN_HOME"
 
-# Try to set LS_COLORS.
-if command_exists dircolors; then
-  eval "$(dircolors -b)"
-fi
+try_set_ls_colors
+try_start_keychain
 
-# Start keychain if it's installed and the shell is interactive.
+# Optional
 #
-# Imports the environment variables for the keychain managed ssh-agent or starts
-# a new keychain managed ssh-agent if one has not been started already.
-# Only start keychain in interactive shells as non-interactive shells may want to
-# forward their own agents.
-#
-# --agents ssh: Only use keychain for ssh (as opposed to gpg etc)
-# --timeout 3: Sets the default timeout for keys added to the agent to 3 minutes
-# --noinherit: Do not inherit agents from existing $SSH_AGENT_PID or $SSH_AGENT_SOCK
-#   environment variables. This includes any non keychain managed SSH agents (with PIDs
-#   and sockets) as well as all forwarded SSH agents (with only sockets).
-#   By extension, this includes the macOS Keychain, as _I think_ this uses agent
-#   forwarding to add the OS managed keys to the agent.
-#   See https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys
-#   for more info.
-# --quiet: Hide the keychain welcome message on init.
-# --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
-#   so must be evaluated in the current shell.
-if tty -s && command_exists keychain; then
-  eval "$(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)"
-fi
-
-# Example: Load all *.key files in $HOME/.ssh into keychain for 1 day (1440 minutes)
-# keychain --quiet --timeout 1440 "$(find $HOME/.ssh -name "*.key")"
+# Load all "*.key" files in "$HOME/.ssh" into keychain for 1 day (1440 minutes).
+# keychain --quiet --timeout 1440 "$(find "$HOME/.ssh" -name "*.key")"
