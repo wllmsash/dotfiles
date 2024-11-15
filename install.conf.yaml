@@ -24,14 +24,15 @@
       description: Configuring git
 
 - link:
-    ~/.bash_aliases_dotfiles: bash_aliases
-    ~/.bash_functions_dotfiles: bash_functions
+    ~/.bash_functions: bash_functions
     ~/.bash_profile_dotfiles: bash_profile
     ~/.bashrc_dotfiles: bashrc
     ~/.bootstrap: bootstrap
     ~/.config/git/ignore: config/git/ignore
     ~/.local/share/keychain: local/share/keychain
     ~/.gitconfig_dotfiles: gitconfig
+    ~/.sh_aliases: sh_aliases
+    ~/.sh_functions: sh_functions
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim

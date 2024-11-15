@@ -1,7 +1,8 @@
 # bash interactive non-login shell startup file
 
-if test -r "$HOME/.bash_aliases_dotfiles"; then source "$HOME/.bash_aliases_dotfiles"; fi
-if test -r "$HOME/.bash_functions_dotfiles"; then source "$HOME/.bash_functions_dotfiles"; fi
+if test -r "$HOME/.sh_aliases"; then source "$HOME/.sh_aliases"; fi
+if test -r "$HOME/.sh_functions"; then source "$HOME/.sh_functions"; fi
+if test -r "$HOME/.bash_functions"; then source "$HOME/.bash_functions"; fi
 
 # Configure macOS.
 if test "$(uname)" = "Darwin"; then
