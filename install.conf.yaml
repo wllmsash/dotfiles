@@ -32,6 +32,7 @@
     ~/.local/share/keychain: local/share/keychain
     ~/.gitconfig_dotfiles: gitconfig
     ~/.sh_aliases: sh_aliases
+    ~/.sh_environment: sh_environment
     ~/.sh_functions: sh_functions
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm

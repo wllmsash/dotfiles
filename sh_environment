@@ -1,0 +1,20 @@
+# Configure default editors.
+export VISUAL=vim
+export EDITOR=$VISUAL   # Set for compatibility when EDITOR is being used instead of VISUAL.
+
+# Add XDG base directories.
+# See https://specifications.freedesktop.org/basedir-spec/latest/.
+# XDG_BIN_HOME is not a defined path but it's useful to have a dedicated variable for a local binary path.
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_BIN_HOME="$HOME/.local/bin"
+
+if test "$(uname)" = "Darwin"; then
+  # Enable terminal coloring.
+  export CLICOLOR=1
+fi
+
+# Disable homebrew analytics.
+export HOMEBREW_NO_ANALYTICS=1

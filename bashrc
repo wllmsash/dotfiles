@@ -1,26 +1,30 @@
 # bash interactive non-login shell startup file
 
-if test -r "$HOME/.sh_aliases"; then source "$HOME/.sh_aliases"; fi
 if test -r "$HOME/.sh_functions"; then source "$HOME/.sh_functions"; fi
+if test -r "$HOME/.sh_environment"; then source "$HOME/.sh_environment"; fi
+if test -r "$HOME/.sh_aliases"; then source "$HOME/.sh_aliases"; fi
 if test -r "$HOME/.bash_functions"; then source "$HOME/.bash_functions"; fi
 
-# Configure macOS.
-if test "$(uname)" = "Darwin"; then
-  # Enable coloring of terminal.
-  export CLICOLOR=1
+prepend_path() {
+  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
 
-  # Better coloring of ls output.
-  export LSCOLORS=ExFxBxDxCxegedabagacad
+  local dir_path="$1"
+  export PATH="$dir_path:$PATH"
+}
 
-  # Set prompt to username@hostname$.
-  export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# Ensure XDG base directories exist.
+# See https://specifications.freedesktop.org/basedir-spec/latest/.
+ensure_dir "$XDG_CACHE_HOME"
+ensure_dir "$XDG_CONFIG_HOME"
+ensure_dir "$XDG_DATA_HOME"
+ensure_dir "$XDG_STATE_HOME"
+ensure_dir "$XDG_BIN_HOME"
 
-  # Disable homebrew analytics.
-  export HOMEBREW_NO_ANALYTICS=1
-fi
+# Add XDG_BIN_HOME to path.
+prepend_path "$XDG_BIN_HOME"
 
 # Try to set LS_COLORS.
-if command -v dircolors >/dev/null 2>&1; then
+if command_exists dircolors; then
   eval "$(dircolors -b)"
 fi
 
@@ -43,7 +47,7 @@ fi
 # --quiet: Hide the keychain welcome message on init.
 # --eval: Similar to eval $(ssh-agent -s) this needs to export environment variables
 #   so must be evaluated in the current shell.
-if tty -s && command -v keychain >/dev/null 2>&1; then
+if tty -s && command_exists keychain; then
   eval "$(keychain --agents ssh --timeout 3 --noinherit --quiet --eval)"
 fi
 

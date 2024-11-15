@@ -3,7 +3,7 @@
 #   -F = append type indicator
 #   -h = human readable formatting
 #   -l = long list formatting
-if command -v dircolors >/dev/null 2>&1; then
+if command_exists dircolors; then
   alias ll="ls -AFhl --color=auto";
 else
   alias ll="ls -AFhl"

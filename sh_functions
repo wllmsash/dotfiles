@@ -1,0 +1,13 @@
+command_exists() {
+  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
+
+  local command_name="$1"
+  command -v "$command_name" >/dev/null 2>&1
+}
+
+ensure_dir() {
+  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
+
+  local dir_path="$1"
+  mkdir -p "$dir_path"
+}
