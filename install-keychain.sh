@@ -26,4 +26,3 @@ sudo ln -s /usr/local/share/keychain/keychain /usr/local/bin
 
 # Clean up
 rm "/tmp/keychain-$KEYCHAIN_VERSION.tar.gz"
-

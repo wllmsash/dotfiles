@@ -14,4 +14,3 @@ then
 else
   echo 'gitconfig_dotfiles already included'
 fi
-

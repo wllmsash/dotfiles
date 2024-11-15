@@ -29,4 +29,3 @@ then
 else
   echo 'bash_profile_dotfiles already sourced'
 fi
-

@@ -3,17 +3,15 @@
 ### macOS
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  # Enable coloring of terminal
+  export CLICOLOR=1
 
-# Enable coloring of terminal
-export CLICOLOR=1
+  # Better coloring of ls output
+  export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# Better coloring of ls output
-export LSCOLORS=ExFxBxDxCxegedabagacad
-
-# Primary prompt customization
-#   username@hostname$
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-
+  # Primary prompt customization
+  #   username@hostname$
+  export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 fi
 
 ### Functions
@@ -56,4 +54,3 @@ fi
 
 # Example: Load all *.key files in ~/.ssh into keychain for 1 day (1440 minutes)
 # keychain --quiet --timeout 1440 $(find $HOME/.ssh -name "*.key")
-

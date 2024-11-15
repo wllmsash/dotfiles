@@ -4,9 +4,9 @@
 #   -F = append type indicator
 #   -h = human readable formatting
 if [[ "$OSTYPE" == "darwin"* ]]; then # OSX
-	alias ls="ls -Fh"
+  alias ls="ls -Fh"
 else
-	alias ls="ls -Fh --color=auto"
+  alias ls="ls -Fh --color=auto"
 fi
 
 # List all
