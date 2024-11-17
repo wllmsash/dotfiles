@@ -41,6 +41,9 @@ SAVEHIST=$HISTSIZE              # Persist all in-memory history.
 ensure_xdg_directories
 prepend_path "$XDG_BIN_HOME"
 
+# Configure command coloring.
+try_set_ls_colors
+
 # Set key bindings.
 bindkey '^R' history-incremental-search-backward                # Search command history.
 lazyload edit-command-line && zle -N edit-command-line          # Widget defined in zshcontrib.
@@ -117,7 +120,7 @@ add_plugin "zsh-autosuggestions/zsh-autosuggestions.zsh"
 # Must be sourced last.
 add_plugin "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-try_set_ls_colors
+# Start local SSH agent.
 try_start_keychain
 
 # Optional

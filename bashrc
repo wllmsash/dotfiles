@@ -10,7 +10,10 @@ if test -r "$HOME/.config/bash/functions"; then source "$HOME/.config/bash/funct
 ensure_xdg_directories
 prepend_path "$XDG_BIN_HOME"
 
+# Configure command coloring.
 try_set_ls_colors
+
+# Start local SSH agent.
 try_start_keychain
 
 # Optional
