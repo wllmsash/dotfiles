@@ -13,6 +13,9 @@ prepend_path "$XDG_BIN_HOME"
 # Configure command coloring.
 try_set_ls_colors
 
+# Inject optional local configuration.
+if test -r "$HOME/.bashrc_local"; then source "$HOME/.bashrc_local"; fi
+
 # Start local SSH agent.
 try_start_keychain
 

@@ -49,10 +49,6 @@ bindkey '^R' history-incremental-search-backward                # Search command
 lazyload edit-command-line && zle -N edit-command-line          # Widget defined in zshcontrib.
 bindkey '^X^E' edit-command-line                                # Edit command line in VISUAL editor.
 
-# Enable command completion for zsh and bash completion functions.
-lazyload compinit && compinit
-lazyload bashcompinit && bashcompinit
-
 # Try to use fzf to search command history.
 if command_exists 'fzf'; then
   # Disable the builtin bindkey to stop `fzf --zsh` from forcing it's key binding opinions on us.
@@ -112,6 +108,16 @@ PROMPT+='%{$fg_bold[blue]%}%n@%M%{$reset_color%} '
 PROMPT+='%~ '
 PROMPT+='$(if ! git_is_not_editing; then print -n "%{$fg_bold[red]%}"; else print -n "%{$fg[green]%}"; fi)$(prepend_append_ifne "$(git_current_branch)" '\''('\'' '\'') '\'')%{$reset_color%}'
 PROMPT+='$ '
+
+# Inject optional local configuration.
+# Some commands must be called at the end of this file. Injecting additional configuration here gives us an opportunity
+# to add machine specific configuration before these commands are run.
+# An example is adding extra completions before we call `compinit`.
+if test -r "$HOME/.zshrc_local"; then source "$HOME/.zshrc_local"; fi
+
+# Enable command completion for zsh and bash completion functions.
+lazyload compinit && compinit
+lazyload bashcompinit && bashcompinit
 
 # Add plugins.
 # https://github.com/zsh-users/zsh-autosuggestions.git
