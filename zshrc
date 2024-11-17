@@ -6,6 +6,7 @@ if test -r "$HOME/.config/sh/environment"; then source "$HOME/.config/sh/environ
 if test -r "$HOME/.config/sh/aliases"; then source "$HOME/.config/sh/aliases"; fi
 if test -r "$HOME/.config/sh/config"; then source "$HOME/.config/sh/config"; fi
 if test -r "$HOME/.config/zsh/functions"; then source "$HOME/.config/zsh/functions"; fi
+if test -r "$HOME/.config/zsh/prompt"; then source "$HOME/.config/zsh/prompt"; fi
 
 # Set tty settings.
 stty -ixon                      # Disable flow control. If enabled C-S suspends output and C-Q resumes output.
@@ -63,51 +64,7 @@ if command_exists 'fzf'; then
 fi
 
 # Style prompt.
-prepend_append_ifne() {
-  if test $# -ne 3; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
-
-  local value="$1"
-  local prepend_value="$2"
-  local append_value="$3"
-  if test -n "$1"; then print -n -f '%s%s%s' "$2" "$1" "$3"; fi
-}
-
-git_current_branch() {
-  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    return 0
-  fi
-
-  git rev-parse --abbrev-ref HEAD 2>/dev/null
-}
-
-git_is_not_editing() {
-  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    return 0
-  fi
-
-  local git_status_text="$(git status)"
-
-  # Test for empty repository.
-  if ({ use_gnu_grep; print -n "$git_status_text" | grep -Pqz '^On branch .+\n\nNo commits yet\n\nnothing to commit.*$'; }); then return 0; fi
-  # Test for clean branch.
-  if ({ use_gnu_grep; print -n "$git_status_text" | grep -Pqz '^On branch .+\nnothing to commit.*$'; }); then return 0; fi
-  # Test for clean branch up to date with remote.
-  if ({ use_gnu_grep; print -n "$git_status_text" | grep -Pqz '^On branch .+\nYour branch is up to date with .+\n\nnothing to commit.*$'; }); then return 0; fi
-  # Test for clean branch ahead of remote.
-  if ({ use_gnu_grep; print -n "$git_status_text" | grep -Pqz '^On branch .+\nYour branch is ahead of .+\n  \(.*\)\n\nnothing to commit.*$'; }); then return 0; fi
-  # Test for clean branch diverged from remote.
-  if ({ use_gnu_grep; print -n "$git_status_text" | grep -Pqz '^On branch .+\nYour branch and .+ have diverged,\nand have .+\n  \(.*\)\n\nnothing to commit.*$'; }); then return 0; fi
-
-  return 1
-}
-
-# See https://en.wikipedia.org/wiki/ANSI_escape_code#3-bit_and_4-bit for allowed colors.
-lazyload colors && colors
-PROMPT=''
-PROMPT+='%{$fg_bold[blue]%}%n@%M%{$reset_color%} '
-PROMPT+='%~ '
-PROMPT+='$(if ! git_is_not_editing; then print -n "%{$fg_bold[red]%}"; else print -n "%{$fg[green]%}"; fi)$(prepend_append_ifne "$(git_current_branch)" '\''('\'' '\'') '\'')%{$reset_color%}'
-PROMPT+='$ '
+set_prompt
 
 # Inject optional local configuration.
 # Some commands must be called at the end of this file. Injecting additional configuration here gives us an opportunity

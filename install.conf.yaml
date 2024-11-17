@@ -43,6 +43,7 @@
     ~/.config/sh/functions: config/sh/functions
     ~/.config/sh/config: config/sh/config
     ~/.config/zsh/functions: config/zsh/functions
+    ~/.config/zsh/prompt: config/zsh/prompt
     ~/.tmux.conf: tmux.conf
     ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim
