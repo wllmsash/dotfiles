@@ -1,4 +1,7 @@
-# bash interactive non-login shell startup file
+# Sourced in interactive non-login shells.
+# See https://linux.die.net/man/1/bash for information on the different startup files.
+# See https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/46856#46856
+# for more information on interactive and login shells.
 
 if test -r "$HOME/.config/sh/functions"; then source "$HOME/.config/sh/functions"; fi
 if test -r "$HOME/.config/sh/environment"; then source "$HOME/.config/sh/environment"; fi

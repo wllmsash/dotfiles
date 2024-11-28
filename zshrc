@@ -1,5 +1,7 @@
-# zsh interactive non-login shell startup file
-# Documentation at https://zsh.sourceforge.io/.
+# Sourced in interactive login and non-login shells.
+# See https://linux.die.net/man/1/zsh for information on the different startup files.
+# See https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/46856#46856
+# for more information on interactive and login shells.
 
 if test -r "$HOME/.config/sh/functions"; then source "$HOME/.config/sh/functions"; fi
 if test -r "$HOME/.config/sh/environment"; then source "$HOME/.config/sh/environment"; fi
