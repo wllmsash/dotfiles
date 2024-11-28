@@ -84,11 +84,3 @@ add_plugin "zsh-autosuggestions/zsh-autosuggestions.zsh"
 # https://github.com/zsh-users/zsh-syntax-highlighting
 # Must be sourced last.
 add_plugin "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-# Start local SSH agent.
-try_start_keychain
-
-# Optional
-#
-# Load all "*.key" files in "$HOME/.ssh" into keychain for 1 day (1440 minutes).
-# keychain --quiet --timeout 1440 "$(find "$HOME/.ssh" -name "*.key")"

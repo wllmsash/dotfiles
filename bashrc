@@ -28,11 +28,3 @@ try_set_ls_colors
 
 # Inject optional local configuration.
 if test -r "$HOME/.bashrc_local"; then source "$HOME/.bashrc_local"; fi
-
-# Start local SSH agent.
-try_start_keychain
-
-# Optional
-#
-# Load all "*.key" files in "$HOME/.ssh" into keychain for 1 day (1440 minutes).
-# keychain --quiet --timeout 1440 "$(find "$HOME/.ssh" -name "*.key")"

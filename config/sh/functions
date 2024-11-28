@@ -21,3 +21,33 @@ use_gnu_grep() {
     }
   fi
 }
+
+# Restore an existing (or start a new) ssh-agent using the keychain wrapper.
+#
+# --agents ssh: Only start ssh-agent and not gpg-agent.
+# --timeout 3: Set the default timeout for key to 3 minutes.
+# --quiet: Hide non-error messages.
+# --eval: Print agent environment variables in an eval friendly format, similar to `eval "$(ssh-agent -s)"`.
+# --noinherit: Do not inherit agents from existing $SSH_AGENT_PID or $SSH_AUTH_SOCK environment variables.
+#   This includes any non-keychain managed SSH agents (with PIDs and sockets) as well as all forwarded SSH agents
+#   (with only sockets). By extension, this includes the macOS Keychain.
+#   See https://superuser.com/questions/88470/how-to-use-mac-os-x-keychain-with-ssh-keys for more information.
+start_keychain() {
+  if command_exists 'keychain'; then
+    eval "$(keychain --agents ssh --timeout 3 --quiet --eval --noinherit "$@")"
+  else
+    echo 'keychain not found' 1>&2
+    return 1
+  fi
+}
+
+# Restore or start an agent and load all keys in "$HOME/.ssh" for $SSH_AGENT_KEY_TIMEOUT_MINS or 1 day (1440 minutes).
+load_keys() {
+  if command_exists 'keychain'; then
+    start_keychain "$@"
+    keychain --quiet --timeout ${SSH_AGENT_KEY_TIMEOUT_MINS:-1440} "$(find "$HOME/.ssh" -name '*.key')"
+  else
+    echo 'keychain not found' 1>&2
+    return 1
+  fi
+}
