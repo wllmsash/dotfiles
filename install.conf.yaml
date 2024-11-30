@@ -42,10 +42,10 @@
     ~/.config/sh/environment: config/sh/environment
     ~/.config/sh/functions: config/sh/functions
     ~/.config/sh/config: config/sh/config
+    ~/.config/tmux/plugins/tpm: config/tmux/plugins/tpm
+    ~/.config/tmux/tmux.conf: config/tmux/tmux.conf
     ~/.config/zsh/functions: config/zsh/functions
     ~/.config/zsh/prompt: config/zsh/prompt
-    ~/.tmux.conf: tmux.conf
-    ~/.tmux/plugins/tpm: tmux/plugins/tpm
     ~/.vim/pack/plugins/start/ctrlp.vim: vim/pack/plugins/start/ctrlp.vim
     ~/.vim/pack/plugins/start/nerdtree: vim/pack/plugins/start/nerdtree
     ~/.vim/pack/plugins/start/typescript-vim: vim/pack/plugins/start/typescript-vim
