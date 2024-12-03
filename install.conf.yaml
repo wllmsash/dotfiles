@@ -36,6 +36,7 @@
     ~/.config/zsh/plugins/zsh-autosuggestions: config/zsh/plugins/zsh-autosuggestions
     ~/.config/zsh/plugins/zsh-syntax-highlighting: config/zsh/plugins/zsh-syntax-highlighting
     ~/.local/share/keychain: local/share/keychain
+    ~/.local/share/tmuxifier: local/share/tmuxifier
     ~/.gitconfig_dotfiles: gitconfig
     ~/.config/bash/functions: config/bash/functions
     ~/.config/sh/aliases: config/sh/aliases
@@ -57,6 +58,7 @@
 
 - link:
     ~/.local/bin/keychain: ~/.local/share/keychain/keychain
+    ~/.local/bin/tmuxifier: ~/.local/share/tmuxifier/bin/tmuxifier
 
 - shell:
     -

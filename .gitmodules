@@ -13,6 +13,9 @@
 [submodule "local/share/keychain"]
 	path = local/share/keychain
 	url = https://github.com/funtoo/keychain
+[submodule "local/share/tmuxifier"]
+	path = local/share/tmuxifier
+	url = https://github.com/jimeh/tmuxifier
 [submodule "vim/pack/plugins/start/ctrlp.vim"]
 	path = vim/pack/plugins/start/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim.git

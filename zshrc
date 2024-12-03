@@ -68,6 +68,9 @@ fi
 # Style prompt.
 set_prompt
 
+# Initialize applications.
+try_init_tmuxifier
+
 # Inject optional local configuration.
 # Some commands must be called at the end of this file. Injecting additional configuration here gives us an opportunity
 # to add machine specific configuration before these commands are run.

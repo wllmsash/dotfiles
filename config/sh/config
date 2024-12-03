@@ -15,3 +15,12 @@ try_set_ls_colors() {
     eval "$(dircolors -b)"
   fi
 }
+
+# Exports tmuxifier environment variables and completions.
+try_init_tmuxifier() {
+  if command_exists 'tmuxifier'; then
+    export TMUXIFIER_LAYOUT_PATH="$XDG_CONFIG_HOME/tmuxifier/layouts"
+    ensure_dir "$TMUXIFIER_LAYOUT_PATH"
+    eval "$(tmuxifier init -)"
+  fi
+}
