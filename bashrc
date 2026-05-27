@@ -9,9 +9,7 @@
 # See https://linux.die.net/man/1/bash for cases where bashrc is sourced.
 # See https://unix.stackexchange.com/questions/715807/what-does-if-not-running-interactively-dont-do-anything-in-the-bashrc-file
 # for more information on this issue.
-if [[ $- != *i* ]]; then
-  return
-fi
+if [[ $- != *i* ]]; then return 0; fi
 
 if test -r "$HOME/.config/sh/functions"; then source "$HOME/.config/sh/functions"; fi
 if test -r "$HOME/.config/sh/environment"; then source "$HOME/.config/sh/environment"; fi
