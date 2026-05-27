@@ -21,11 +21,5 @@ if test -r "$HOME/.config/bash/functions"; then source "$HOME/.config/bash/funct
 ensure_xdg_directories
 prepend_path "$XDG_BIN_HOME"
 
-# Configure command coloring.
-try_set_ls_colors
-
-# Initialize applications.
-try_init_tmuxifier
-
 # Inject optional local configuration.
 if test -r "$HOME/.bashrc_local"; then source "$HOME/.bashrc_local"; fi
