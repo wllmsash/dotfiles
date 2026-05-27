@@ -32,7 +32,6 @@
     ~/.bash_profile_dotfiles: bash_profile
     ~/.bashrc_dotfiles: bashrc
     ~/.bootstrap: bootstrap
-    ~/.config/git/ignore: config/git/ignore
     ~/.config/zsh/plugins/zsh-autosuggestions: config/zsh/plugins/zsh-autosuggestions
     ~/.config/zsh/plugins/zsh-syntax-highlighting: config/zsh/plugins/zsh-syntax-highlighting
     ~/.local/share/keychain: local/share/keychain
