@@ -9,9 +9,11 @@ fi
 brew update
 brew install bash-completion
 
-if ! grep -Fxq '# dotfiles: bash-completion' "$HOME/.bashrc";
+touch "$HOME/.bashrc_local"
+
+if ! grep -Fxq '# dotfiles: bash-completion' "$HOME/.bashrc_local";
 then
-  cat <<EOF >> "$HOME/.bashrc"
+  cat <<EOF >> "$HOME/.bashrc_local"
 # dotfiles: bash-completion
 if test -r "/usr/local/etc/profile.d/bash_completion.sh"; then source "/usr/local/etc/profile.d/bash_completion.sh"; fi
 
