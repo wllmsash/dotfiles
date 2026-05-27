@@ -44,3 +44,6 @@
     git commit; \
   }; f"
 
+# Inject optional local configuration.
+[include]
+  path = ~/.gitconfig_local
