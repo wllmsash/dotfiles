@@ -3,15 +3,11 @@ lazyload() {
 }
 
 prepend_path() {
-  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
-
   local dir_path="$1"
   path=("$dir_path" "$path[@]")
 }
 
 add_plugin() {
-  if test $# -ne 1; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
-
   local file_path="$1"
   local plugin_path="$XDG_CONFIG_HOME/zsh/plugins/$file_path"
   if test -e "$plugin_path"; then source "$plugin_path"; fi

@@ -1,10 +1,8 @@
-prepend_append_ifne() {
-  if test $# -ne 3; then printf 'invalid args: %s\n' "$funcstack[1]"; exit 1; fi
-
+prepend_append_if_not_empty() {
   local value="$1"
-  local prepend_value="$2"
-  local append_value="$3"
-  if test -n "$1"; then print -n -f '%s%s%s' "$2" "$1" "$3"; fi
+  local prepend="$2"
+  local append="$3"
+  if test -n "$value"; then print -n -f '%s%s%s' "$prepend" "$value" "$append"; fi
 }
 
 git_current_branch() {
@@ -43,6 +41,6 @@ set_prompt() {
   PROMPT=''
   PROMPT+='%{$fg_bold[blue]%}%n@%M%{$reset_color%} '
   PROMPT+='%~ '
-  PROMPT+='$(if ! git_is_not_editing; then print -n "%{$fg_bold[red]%}"; else print -n "%{$fg[green]%}"; fi)$(prepend_append_ifne "$(git_current_branch)" '\''('\'' '\'') '\'')%{$reset_color%}'
+  PROMPT+='$(if ! git_is_not_editing; then print -n "%{$fg_bold[red]%}"; else print -n "%{$fg[green]%}"; fi)$(prepend_append_if_not_empty "$(git_current_branch)" '\''('\'' '\'') '\'')%{$reset_color%}'
   PROMPT+='$ '
 }
